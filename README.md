@@ -53,6 +53,4 @@ Note: Make sure to keep your API token and email credentials secure and avoid co
 
 For more information about the Tibber API and how to obtain an API token, refer to the [Tibber API documentation](https://developer.tibber.com/docs/overview).
 
-If you encounter any issues or have questions, feel free to contact the script author: veghotve.
-
 Happy monitoring of energy prices with Tibber API!
