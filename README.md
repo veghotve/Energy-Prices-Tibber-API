@@ -1,72 +1,58 @@
-# Energy Prices Tibber API Script
+# Energy Prices Tibber API
 
-This script retrieves energy prices from the Tibber API and sends an email with the average prices for today and tomorrow, along with a table containing the prices for each hour.
-
-## Prerequisites
-
-Before running the script, make sure you have the following installed:
-
-- Python 3.x
-- The following Python packages: `requests`, `smtplib`, `pandas`
+This script fetches energy prices from the Tibber API and sends an email containing the average prices for today and tomorrow, as well as a table with detailed prices for each hour. The script uses Python and requires a few dependencies to be installed.
 
 ## Installation
 
-To use this script, follow these steps:
+To use this script, you need to have the following installed:
 
-1. Clone the repository:
+- Python (version 3.6 or higher)
+- The `requests` library
+- The `smtplib` library
+- The `pandas` library
+
+You can install these dependencies using `pip`. Open your terminal or command prompt and run the following command:
+
+```
+pip install requests smtplib pandas
+```
+
+## Usage
+
+1. Clone the repository to your local machine or download the script file.
+
+2. Open the script file in a text editor.
+
+3. Provide your API credentials and email details:
+
+   - Replace `TIBBER_TOKEN` with your Tibber API token.
+   - Replace `sender_email` with your Gmail email address.
+   - Replace `sender_password` with your Gmail password or an [app password](https://support.google.com/accounts/answer/185833?hl=en) if you have two-factor authentication enabled.
+   - Replace `recipient_email` with the email address where you want to receive the energy price notification.
+   - (Optional) Add additional recipient email addresses in the `recipient_email1` variable.
+
+4. Save the changes to the script file.
+
+5. Open a terminal or command prompt and navigate to the directory where the script is located.
+
+6. Run the script by executing the following command:
+
    ```
-   git clone https://github.com/veghotve/Energy-Prices-Tibber-API.git
+   python script_name.py
    ```
 
-2. Install the required Python packages:
-   ```
-   pip install requests smtplib pandas
-   ```
+   Replace `script_name.py` with the actual name of the script file.
 
-3. Set up the configuration file:
-   - Create a file named `config.py` in the root directory.
-   - Add the following lines to `config.py`:
-     ```python
-     sender_email = "your_email@gmail.com"  # Replace with your email address
-     sender_password = "your_email_password"  # Replace with your email password
-     TIBBER_TOKEN = "your_tibber_api_token"  # Replace with your Tibber API token
-     recipient_email = "recipient_email@gmail.com"  # Replace with the recipient's email address
-     recipient_email1 = "recipient_email1@gmail.com"  # Add additional recipient email addresses if needed
-     ```
+7. The script will fetch the energy prices and send an email containing the average prices for today and tomorrow, as well as a table with detailed prices for each hour.
 
-4. Run the script:
-   ```
-   python energy_prices_script.py
-   ```
+8. You will receive the email at the specified recipient email address(es).
 
-## Description
+Note: Make sure to keep your API token and email credentials secure and avoid committing them to a public repository.
 
-The script performs the following steps:
+## Additional Information
 
-1. Imports the necessary modules and libraries:
-   - `requests`: for making API requests
-   - `smtplib`: for sending emails
-   - `time`: for adding delays
-   - `email.mime.text` and `email.mime.multipart`: for composing email messages
-   - `pandas`: for creating and manipulating data frames
+For more information about the Tibber API and how to obtain an API token, refer to the [Tibber API documentation](https://developer.tibber.com/docs/overview).
 
-2. Sets up the API endpoint, authorization header, and GraphQL query for fetching energy prices from the Tibber API.
+If you encounter any issues or have questions, feel free to contact the script author: veghotve.
 
-3. Initializes the average price variables.
-
-4. Executes a loop to fetch the average prices for today and tomorrow:
-   - Sends a GraphQL query to the Tibber API.
-   - Parses the response and calculates the average price for today.
-   - Calculates the average price for tomorrow if available. If not, waits for 1 minute before retrying.
-
-5. Creates data frames for today's and tomorrow's prices using the Pandas library.
-
-6. Generates an HTML email message with the average prices and the hourly prices for today and tomorrow.
-
-7. Sets up the email message with the sender, recipient, subject, and HTML content.
-
-8. Sends the email using Gmail's SMTP server.
-
-Note: Make sure to replace the placeholder values in the `config.py` file with your actual email, API token, and recipient email addresses.
-
-That's it! You can now run the script to retrieve energy prices from the Tibber API and receive an email with the price information.
+Happy monitoring of energy prices with Tibber API!
